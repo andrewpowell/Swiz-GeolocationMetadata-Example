@@ -3,6 +3,12 @@ https://github.com/andrewpowell/swiz-geolocation
 
 Requires Flex 4.5 mobile framework.
 
+Requires GeoUtils project:
+https://github.com/andrewpowell/GeoUtils
+
+Requires Swiz-Geolocation project:
+https://github.com/andrewpowell/swiz-geolocation
+
 Requires modification to the existing Swiz Framework version to accommodate mobile development with spark modules:
 http://swizframework.jira.com/browse/SWIZ-39
 
