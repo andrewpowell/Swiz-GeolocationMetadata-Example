@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:swiz="http://swiz.swizframework.org"
+               xmlns:config="org.andypowell.examples.config.*"
+               xmlns:views="org.andypowell.examples.views.*"
+               xmlns:processors="org.swizframework.processors.*" 
+			   xmlns:geolocation="http://geolocation.swizframework.org">
+    <fx:Script>
+        <![CDATA[
+			import mx.rpc.events.FaultEvent;
+        
+
+	        private function genericFaultHandler(fe:FaultEvent):void {
+	            trace(fe.fault.message);
+	        }
+
+        ]]>
+    </fx:Script>
+
+    <fx:Declarations>
+		
+		
+		
+        <geolocation:GeolocationSetup id="geoSetup" stopOnDeactivate="true" updateInterval="30000"/>
+
+        <swiz:Swiz>
+            <swiz:beanProviders>
+                <config:Beans/>
+            </swiz:beanProviders>
+
+            <swiz:config>
+                <swiz:SwizConfig
+                        setUpEventType="{ Event.ADDED_TO_STAGE }"
+                        setUpEventPhase="{ EventPhase.CAPTURING_PHASE }"
+                        setUpEventPriority="50"
+                        tearDownEventType="{ Event.REMOVED_FROM_STAGE }"
+                        tearDownEventPhase="{ EventPhase.CAPTURING_PHASE }"
+                        tearDownEventPriority="50"
+                        eventPackages="org.andypowell.examples.events"
+                        viewPackages="org.andypowell.examples.views"
+                        defaultFaultHandler="genericFaultHandler"
+                        defaultDispatcher="global"/>
+            </swiz:config>
+            <swiz:customProcessors>
+                <processors:GeolocationProcessor config="{geoSetup}"/>
+            </swiz:customProcessors>
+        </swiz:Swiz>
+
+    </fx:Declarations>
+
+    <views:MainView width="100%" height="100%"/>
+</s:Application>

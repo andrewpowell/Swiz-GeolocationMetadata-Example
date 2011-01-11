@@ -1,0 +1,10 @@
+*.iml
+.DS_Store
+.actionScriptProperties
+.flexProperties
+.idea
+.project
+.settings
+bin-debug
+libs
+out
